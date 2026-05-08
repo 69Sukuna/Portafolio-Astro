@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+const { title = 'José Daniel García Escobar — Portafolio' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content="Portafolio de José Daniel García Escobar — Estudiante de Ingeniería de Sistemas, docente auxiliar y líder académico en la Universidad Técnica de Oruro." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav>
+    <span class="nav-logo">Jose.dev</span>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#certificaciones">Certs</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <span class="footer-text">© 2025 José Daniel García Escobar</span>
+    <span class="footer-text">Oruro, Bolivia · UTO</span>
+  </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('[data-width]').forEach((el) => {
+          const htmlEl = el as HTMLElement;
+          htmlEl.style.width = htmlEl.dataset.width ?? '0%';
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.skills-grid').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

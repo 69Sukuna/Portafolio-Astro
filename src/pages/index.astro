@@ -1,0 +1,452 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  { name: 'Robótica Educativa', level: 90 },
+  { name: 'Estadística Aplicada', level: 85 },
+  { name: 'ISO 27001 / Ciberseguridad', level: 75 },
+  { name: 'Docencia y Pedagogía', level: 88 },
+  { name: 'Gestión de Equipos', level: 85 },
+  { name: 'Desarrollo Android', level: 65 },
+  { name: 'Microcontroladores', level: 70 },
+  { name: 'Organización de Eventos', level: 92 },
+];
+
+const experiences = [
+  {
+    date: '2025',
+    title: 'Auxiliar de Cátedra — Estadística Aplicada',
+    org: 'FNI · Depto. de Matemáticas UTO',
+    desc: 'Apoyo académico en los semestres I y II-2025. Diseño de material didáctico, seguimiento de estudiantes y corrección de evaluaciones.',
+  },
+  {
+    date: '2025',
+    title: 'Supervisor — Estudio Técnico Asentamiento de Ferias',
+    org: 'UTO · DICYT — Av. 6 de Agosto',
+    desc: 'Supervisión y coordinación del relevamiento técnico de ferias de temporada por encargo de la Dirección de Investigación Científica y Tecnológica.',
+  },
+  {
+    date: '2024–2025',
+    title: 'Auxiliar de Cátedra — Programación de Robots',
+    org: 'FNI · Carrera Ing. Sistemas e Informática UTO',
+    desc: 'Soporte práctico en talleres de programación de robots para estudiantes de ingeniería. Semestre II-2024 y gestión 2025.',
+  },
+  {
+    date: '2024',
+    title: 'Presidente — Sociedad Científica SoCiE-ISII',
+    org: 'Carrera Ing. Sistemas e Ing. Informática · UTO',
+    desc: 'Liderazgo de la sociedad científica estudiantil: planificación de charlas, olimpiadas y eventos tecnológicos.',
+  },
+  {
+    date: '2024',
+    title: 'Capacitador de Robótica para Profesores',
+    org: 'Facultad Técnica de Oruro · UTO',
+    desc: 'Capacitación docente en robótica educativa, orientada al uso pedagógico de plataformas de automatización.',
+  },
+];
+
+const leadership = [
+  { year: '2025', title: 'Organizador Congreso CCBOL 2025 — Comisión Primeros Auxilios', org: 'UTO · FNI' },
+  { year: '2024', title: 'Organizador VIII Olimpiada de Robótica para Estudiantes de Secundaria', org: 'UTO · FNI' },
+  { year: '2024', title: 'Organizador y Orador FLISOL — Festival Latinoam. Instalación Software Libre', org: 'Oruro' },
+  { year: '2024', title: 'Organizador VII Olimpiada de Robótica para Estudiantes de Secundaria', org: 'UTO · FNI' },
+  { year: '2024', title: 'Organizador charlas virtuales SoCiE-ISII', org: 'Carrera Ing. Sistemas' },
+  { year: '2018', title: 'Logística BIMUM-JM', org: 'Colegio Jesús María 2' },
+];
+
+const certifications = [
+  { name: 'Datos Cuantitativos, Recolección, Análisis e Interpretación', org: 'UTO · DICYT', year: '2025' },
+  { name: 'Herramientas IA Para la Educación', org: 'UTO · DPA · DTIC', year: '2025' },
+  { name: 'Ethical Hacking y Pentesting', org: 'Hacker Mentor Academia de Ciberseguridad', year: '2024' },
+  { name: 'Workshop Ley Protección de Datos Personales', org: 'Hacker Mentor Academia', year: '2024' },
+  { name: 'Workshop ISO 27001', org: 'Hacker Mentor Academia de Ciberseguridad', year: '2024' },
+  { name: 'Plataformas Virtuales en Educación Superior', org: 'Universidad Técnica de Oruro', year: '2022' },
+  { name: 'Desarrollo de Aplicaciones Android', org: 'FNI · Carrera Ing. Sistemas', year: '2019' },
+  { name: 'Microcontroladores', org: 'CRUNITEC', year: '2019' },
+  { name: 'Actualización Tecnológica PRO-ACTIVA (Redes, Virus, Serv. Técnico)', org: 'Grupo I+D Web 2.0', year: '2019' },
+  { name: 'Seguridad en Redes Inalámbricas', org: 'Grupo I+D Web 2.0', year: '2019' },
+  { name: 'Mantenimiento y Reparación de Computadoras', org: 'FNI · UTO', year: '2019' },
+  { name: 'INSPIRING STUDY CONFERENCE WITH GOOGLE', org: 'PROGRESSIO · Google', year: '2023' },
+];
+
+const awards = [
+  { medal: '🏆', title: 'Reconocimiento Supervisor Estudio Técnico Ferias Av. 6 de Agosto', org: 'Gobierno Autónomo Municipal de Oruro · 2025' },
+  { medal: '🥇', title: 'Reconocimiento Recolección de Muestras de Agua', org: 'UTO · DICYT · Ballard Center Brigham Young University · 2025' },
+  { medal: '🥉', title: 'Tercer Lugar VI Olimpiada de Programación para Estudiantes de Secundaria', org: 'Carrera Ing. Sistemas e Informática · 2017' },
+  { medal: '🤝', title: 'Participación ICPC (International Collegiate Programming Contest)', org: 'UTO · FNI · 2019' },
+];
+
+const events = [
+  { year: '2025', title: 'Expositor FLISOL Oruro 2025', org: 'Carrera Ing. Sistemas e Informática' },
+  { year: '2024', title: 'Expositor Feria Expoteco', org: 'FNI · Centro de Estudiantes INGE PRIME' },
+  { year: '2024', title: '"Conoce lo Nuevo de NETCAD 2024"', org: 'FNI · Carrera Ing. Sistemas · CISCO' },
+  { year: '2024', title: 'Simposio Científico "Tras las Huellas del Saber"', org: 'FNI · DPIC · OSCE-FNI' },
+  { year: '2022', title: 'II Jornadas de Tecnologías de Comunicación', org: 'UTO · FNI · CISCO Networking Academy' },
+  { year: '2022', title: 'Jornadas Académicas Ing. Sistemas e Informática', org: 'FNI · UTO' },
+];
+
+const blogPosts = [
+  {
+    date: 'Próximamente',
+    title: 'Robótica Educativa en la Universidad: Mi Experiencia como Auxiliar',
+    excerpt: 'Reflexiones sobre la enseñanza de programación de robots y cómo impacta el aprendizaje de los estudiantes de ingeniería.',
+  },
+  {
+    date: 'Próximamente',
+    title: 'ISO 27001 para Estudiantes: Cómo Empezar en Ciberseguridad',
+    excerpt: 'Una guía introductoria a las normativas de seguridad de la información desde la perspectiva de un estudiante de sistemas.',
+  },
+  {
+    date: 'Próximamente',
+    title: 'Organizando FLISOL: Software Libre como Filosofía Académica',
+    excerpt: 'Crónica de la organización del Festival Latinoamericano de Instalación de Software Libre en Oruro, Bolivia.',
+  },
+];
+---
+<Layout>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-left">
+      <p class="hero-label">Portafolio Profesional</p>
+      <h1 class="hero-name">
+        José <span>Daniel</span><br/>García Escobar
+      </h1>
+      <p class="hero-title">Ing. Sistemas · Docente Auxiliar · Líder Académico · UTO</p>
+      <p class="hero-bio">
+        Estudiante de Ingeniería de Sistemas en la FNI-UTO — carrera con visión holística 
+        en gestión empresarial, investigación de operaciones y dinámica de sistemas. 
+        Complementado con experiencia en docencia auxiliar y liderazgo académico, 
+        y un interés autodidacta en desarrollo web con Astro, Angular y React.
+      </p>
+      <div class="hero-ctas">
+        <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
+        <a href="#contacto" class="btn-secondary">Contactar</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Años docencia<br/>auxiliar</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8+</div>
+          <div class="stat-label">Eventos<br/>organizados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Personas<br/>coordinadas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Cursos y<br/>certificaciones</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Sobre Mí</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Soy estudiante de <strong>Ingeniería de Sistemas</strong> en la Universidad Técnica de Oruro,
+          con una sólida trayectoria en <strong>docencia auxiliar, liderazgo académico y gestión de equipos</strong>.
+          He coordinado y dirigido grupos de hasta 30 personas en contextos académicos y científicos.
+        </p>
+        <p>
+          Mi pasión está en la intersección entre la tecnología y la educación: la robótica educativa,
+          la aplicación de estadística y el fortalecimiento del desarrollo académico a través de
+          iniciativas formativas e investigación.
+        </p>
+        <p>
+          Tengo especial interés en la implementación de <strong>normativas ISO</strong>, particularmente
+          ISO 27001, y en la optimización de procesos de gestión y administración institucional.
+        </p>
+        <div class="about-contact">
+          <div class="contact-item">
+            <span class="icon">📱</span>
+            <span>75715664</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">✉️</span>
+            <span>jose.garcia@sistemas.edu.bo</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">📍</span>
+            <span>Urb. Milenium Mz B2 Lt 18 — Oruro, Bolivia</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">🌐</span>
+            <span>Español nativo</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;">
+          — Fortalezas
+        </p>
+        <div class="skills-grid">
+          {skills.map(skill => (
+            <div class="skill-row">
+              <span class="skill-name">{skill.name}</span>
+              <div class="skill-bar">
+                <div class="skill-fill" data-width={`${skill.level}%`} style="width:0%"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia" style="background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Experiencia</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;">
+      — Académica &amp; Laboral
+    </p>
+    <div class="timeline" style="margin-bottom:4rem;">
+      {experiences.map(exp => (
+        <div class="timeline-item">
+          <span class="timeline-date">{exp.date}</span>
+          <div class="timeline-content">
+            <h3>{exp.title}</h3>
+            <p class="org">{exp.org}</p>
+            <p>{exp.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;">
+      — Liderazgo &amp; Organización
+    </p>
+    <div class="timeline">
+      {leadership.map(item => (
+        <div class="timeline-item">
+          <span class="timeline-date">{item.year}</span>
+          <div class="timeline-content">
+            <h3>{item.title}</h3>
+            <p class="org">{item.org}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Proyectos</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <p class="project-tag">Investigación · 2025</p>
+        <h3>Estudio Técnico del Asentamiento de Ferias — Av. 6 de Agosto</h3>
+        <p>
+          Supervisión y coordinación del levantamiento técnico de ferias de temporada en Oruro.
+          Reconocido por el Gobierno Autónomo Municipal de Oruro por la calidad del trabajo realizado.
+        </p>
+        <div class="project-techs">
+          <span class="tech-pill">DICYT</span>
+          <span class="tech-pill">Investigación de campo</span>
+          <span class="tech-pill">Datos cuantitativos</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-tag">Robótica Educativa · 2024</p>
+        <h3>Olimpiadas de Robótica para Estudiantes de Secundaria (VII y VIII)</h3>
+        <p>
+          Co-organizador de dos ediciones consecutivas de la Olimpiada de Robótica a nivel nacional,
+          coordinando la logística, inscripciones y desarrollo de la competencia para colegios de Oruro.
+        </p>
+        <div class="project-techs">
+          <span class="tech-pill">UTO · FNI</span>
+          <span class="tech-pill">Robótica</span>
+          <span class="tech-pill">Gestión de eventos</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-tag">Software Libre · 2024–2025</p>
+        <h3>FLISOL Oruro — Festival Latinoamericano de Instalación de Software Libre</h3>
+        <p>
+          Organizador y expositor del evento en 2024 y 2025. Presentación de charlas sobre
+          herramientas de software libre, privacidad digital y ecosistema open source.
+        </p>
+        <div class="project-techs">
+          <span class="tech-pill">Software Libre</span>
+          <span class="tech-pill">Linux</span>
+          <span class="tech-pill">Comunidad</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-tag">Ciencia · 2025</p>
+        <h3>Recolección de Muestras de Agua — DICYT & Brigham Young University</h3>
+        <p>
+          Participación en proyecto de investigación ambiental en colaboración con UTO DICYT
+          y el Ballard Center de Brigham Young University. Reconocido oficialmente por la institución.
+        </p>
+        <div class="project-techs">
+          <span class="tech-pill">Investigación</span>
+          <span class="tech-pill">DICYT</span>
+          <span class="tech-pill">BYU</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-tag">Docencia · 2024</p>
+        <h3>Capacitación en Robótica para Docentes — Facultad Técnica UTO</h3>
+        <p>
+          Diseño e impartición de taller de robótica educativa dirigido a profesores de la
+          Facultad Técnica de Oruro, con enfoque en herramientas pedagógicas aplicadas.
+        </p>
+        <div class="project-techs">
+          <span class="tech-pill">Robótica</span>
+          <span class="tech-pill">Capacitación docente</span>
+          <span class="tech-pill">UTO</span>
+        </div>
+      </div>
+
+      <div class="project-card" style="border-style:dashed;opacity:0.6;">
+        <p class="project-tag">En desarrollo</p>
+        <h3>Próximo proyecto</h3>
+        <p>
+          Este espacio está reservado para tu próximo proyecto. ¡Agrega aquí tus desarrollos personales,
+          trabajos de tesis o aplicaciones que estés construyendo!
+        </p>
+        <div class="project-techs">
+          <span class="tech-pill">TBD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICACIONES -->
+  <section id="certificaciones" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Cursos &amp; Certificaciones</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certs-grid">
+      {certifications.map(cert => (
+        <div class="cert-item">
+          <span class="cert-icon">📜</span>
+          <div class="cert-info">
+            <h4>{cert.name}</h4>
+            <span>{cert.org} · {cert.year}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div style="margin-top:4rem;">
+      <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;">
+        — Logros &amp; Reconocimientos
+      </p>
+      <div class="awards-list">
+        {awards.map(award => (
+          <div class="award-item">
+            <span class="award-medal">{award.medal}</span>
+            <div class="award-info">
+              <h4>{award.title}</h4>
+              <span>{award.org}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div style="margin-top:4rem;">
+      <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;">
+        — Participación en Eventos Académicos
+      </p>
+      <div class="certs-grid">
+        {events.map(ev => (
+          <div class="cert-item">
+            <span class="cert-icon">🎤</span>
+            <div class="cert-info">
+              <h4>{ev.title}</h4>
+              <span>{ev.org} · {ev.year}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Blog</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="blog-grid">
+      {blogPosts.map(post => (
+        <div class="blog-card">
+          <p class="blog-date">{post.date}</p>
+          <h3>{post.title}</h3>
+          <p>{post.excerpt}</p>
+          <p class="blog-placeholder">— Artículo en preparación</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact-section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Contacto</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>¿Hablamos sobre<br/><em>un proyecto?</em></h2>
+        <p>
+          Estoy abierto a colaboraciones académicas, proyectos de robótica educativa,
+          consultoría en gestión y cualquier iniciativa tecnológica que valga la pena.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="tel:75715664" class="contact-link">
+          <span class="icon">📱</span>
+          <span>+591 75715664</span>
+        </a>
+        <a href="mailto:jose.garcia@sistemas.edu.bo" class="contact-link">
+          <span class="icon">✉️</span>
+          <span>jose.garcia@sistemas.edu.bo</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
+          <span class="icon">💼</span>
+          <span>LinkedIn — José Daniel García Escobar</span>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
+          <span class="icon">⚙️</span>
+          <span>GitHub — @jdgarcia</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
